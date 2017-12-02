@@ -4,11 +4,11 @@ class Eleve:
         self.prenom = prenom
         self.notes = notes
 
-    def nom(self):
+    def getNom(self):
         return self.nom
 
-    def prenom(self):
+    def getPrenom(self):
         return self.prenom
 
-    def notes(self):
+    def getNotes(self):
         return self.notes
