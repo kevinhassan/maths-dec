@@ -2,6 +2,7 @@ import sys
 from parser import convertToInt, parseCSV
 
 from Eleve import Eleve
+from Groupe import Groupe
 
 """
     Récupérer la matrice de préférence
@@ -28,4 +29,30 @@ nbTrinome = (nbEleve - nbBinome * 2)//3
 """
 for i in range(0, len(eleves)):
     eleve = eleves[i]
-    eleves[i] = Eleve(eleve[1], eleve[0], preferences[i])
+    eleves[i] = Eleve(i,eleve[1], eleve[0], preferences[i])
+
+""" 
+    Associer les élèves entre eux dans des binomes et/ou trinomes
+"""
+binomes = []
+binome = []
+
+#Former les binomes
+for i in range(0, nbBinome*2): 
+    binome.append(eleves[i])
+    if i%2 != 0 :
+        #ajouter le binome constitué et l'effacer 
+        binomes.append(binome)
+        binome = [eleves[i]]
+    
+
+trinomes = []
+trinome = []
+
+#Former les trinomes
+for i in range(nbBinome*2, nbBinome*2 + nbTrinome*3): 
+    trinome.append(eleves[i])
+    if i>nbBinome*2 and i%2 == 0 :
+        #ajouter le binome constitué et l'effacer 
+        trinomes.append(trinome)
+        trinome = [eleves[i]]
