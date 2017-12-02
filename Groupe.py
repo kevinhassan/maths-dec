@@ -8,8 +8,17 @@ class Groupe:
     def getEleve(self):
         return self.eleves
     
+    """
+        Vérifier que le nombre d'étudiant est supérieur à 0 avant de supprimer
+    """
     def supprimerEleve(self,eleve):
-        self.eleves.remove(eleve)
+        try:
+            if eleve in self.eleves: 
+                self.eleves.remove(eleve)
+            else: 
+                raise PresentException("Erreur : élève absent dans le groupe")
+        except PresentException as err:
+            print(err)
 
     """
         Vérifier l'unicité de l'élève lors de l'ajout
@@ -18,12 +27,12 @@ class Groupe:
     def ajouterEleve(self,eleve):
         try:
             if len(self.eleves) > 2:
-                raise ValueError("l'année saisie est négative ou nulle")
+                raise ValueError("Erreur : nombre d'élève du groupe dépassé" )
             elif eleve in self.eleves: 
-                raise PresentException("l'année saisie est négative ou nulle")
+                raise PresentException("Erreur : élève déjà présent dans le groupe")
             else:
                 self.eleves.append(eleve)                
-        except ValueError:
-            print("Erreur : nombre d'élève du groupe dépassé")
-        except PresentException:
-            print("Erreur : eleve déjà présent dans le groupe")
+        except ValueError as err:
+            print(err)
+        except PresentException as err:
+            print(err)
