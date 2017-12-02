@@ -1,4 +1,5 @@
 import sys
+
 from parser import convertToInt, parseCSV
 
 from Eleve import Eleve
@@ -34,19 +35,18 @@ for i in range(0, len(eleves)):
 """ 
     Associer les élèves entre eux dans des binomes et/ou trinomes
 """
-binomes = []
 binome = []
-
+groupes = []
 #Former les binomes
 for i in range(0, nbBinome*2): 
     binome.append(eleves[i])
     if i%2 != 0 :
         #ajouter le binome constitué et l'effacer 
-        binomes.append(binome)
-        binome = [eleves[i]]
+        groupe = Groupe(binome)
+        groupes.append(groupe)
+        binome = []
     
 
-trinomes = []
 trinome = []
 
 #Former les trinomes
@@ -54,5 +54,6 @@ for i in range(nbBinome*2, nbBinome*2 + nbTrinome*3):
     trinome.append(eleves[i])
     if i>nbBinome*2 and i%2 == 0 :
         #ajouter le binome constitué et l'effacer 
-        trinomes.append(trinome)
+        groupe = Groupe(trinome)
+        groupes.append(groupe)
         trinome = [eleves[i]]
