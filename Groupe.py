@@ -36,3 +36,7 @@ class Groupe:
             print(err)
         except PresentException as err:
             print(err)
+
+    def estBinome(self):
+        print(self.eleves)
+        return len(self.eleves) == 2
