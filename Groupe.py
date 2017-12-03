@@ -43,8 +43,17 @@ class Groupe:
     """
         La note d'une groupe correspond à la mention minimum d'un eleve d'être dans ce groupe
     """
-    #def getNote(self):
+    def getNote(self):
         #Parcourir les élèves du groupe 
         #Récupérer la satisfaction de chacun d'être dans le groupe 
         #Prendre la satisfaction minimum
+        tmp = self.eleves.copy()
+        satisfactions = []
+        for eleve in self.eleves:
+            tmp.remove(eleve) #supprimer l'élève actuel
+            #calculer la satisfaction d'être avec les autres
+            satisfactions.append(eleve.getSatisfaction(tmp))
+            #on remet tous les élèves dans la liste
+            tmp = self.eleves.copy()
+        return min(satisfactions)
         
