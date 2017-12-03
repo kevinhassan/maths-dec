@@ -6,6 +6,19 @@ from Eleve import Eleve
 from Groupe import Groupe
 
 """
+    Test unitaire pour vérifier la bonne création des groupes
+"""
+def testNbGroupes(groupes, nbBinome, nbTrinome): 
+    bin,trin = 0,0
+    for groupe in groupes:
+        if groupe.estBinome():
+            bin = bin +1
+        else:
+            trin = trin +1 
+    return nbBinome == bin and nbTrinome == trin
+
+
+"""
     Récupérer la matrice de préférence
     Récupérer le nom des élèves 
 """
@@ -53,7 +66,9 @@ trinome = []
 for i in range(nbBinome*2, nbBinome*2 + nbTrinome*3): 
     trinome.append(eleves[i])
     if i>nbBinome*2 and i%2 == 0 :
-        #ajouter le binome constitué et l'effacer 
+        #ajouter le trinome constitué et l'effacer 
         groupe = Groupe(trinome)
         groupes.append(groupe)
         trinome = [eleves[i]]
+
+print(testNbGroupes(groupes,nbBinome,nbTrinome))
