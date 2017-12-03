@@ -81,4 +81,6 @@ for i in range(nbBinome*2, nbBinome*2 + nbTrinome*3):
         #ajouter le trinome constitué et l'effacer 
         groupe = Groupe(trinome)
         groupes.append(groupe)
-        trinome = [eleves[i]]
+        trinome = []
+
+print(testNbGroupes(groupes, nbBinome, nbTrinome))
