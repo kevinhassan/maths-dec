@@ -17,6 +17,12 @@ def testNbGroupes(groupes, nbBinome, nbTrinome):
             trin = trin +1 
     return nbBinome == bin and nbTrinome == trin
 
+"""
+    Trier les groupes dans la liste selon leurs note
+    Premier élément : groupe dont la satisfaction est la plus basse
+"""
+def trierGroupe(groupes):
+    groupes.sort(key=lambda x: x.getNote())
 
 """
     Récupérer la matrice de préférence
