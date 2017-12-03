@@ -25,6 +25,12 @@ def trierGroupe(groupes):
     groupes.sort(key=lambda x: x.getNote())
 
 """
+    Prendre le groupe dont la note est la plus basse
+"""
+def getMinGroupe(groupes):
+    return min(groupes, key=lambda x: x.getNote())
+
+"""
     Récupérer la matrice de préférence
     Récupérer le nom des élèves 
 """
@@ -76,5 +82,3 @@ for i in range(nbBinome*2, nbBinome*2 + nbTrinome*3):
         groupe = Groupe(trinome)
         groupes.append(groupe)
         trinome = [eleves[i]]
-
-print(testNbGroupes(groupes,nbBinome,nbTrinome))
