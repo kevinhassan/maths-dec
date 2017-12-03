@@ -43,7 +43,7 @@ class Groupe:
     """
         La note d'une groupe correspond à la mention minimum d'un eleve d'être dans ce groupe
     """
-    def getNote(self):
+    #def getNote(self):
         #Parcourir les élèves du groupe 
         #Récupérer la satisfaction de chacun d'être dans le groupe 
         #Prendre la satisfaction minimum
