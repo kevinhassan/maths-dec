@@ -46,7 +46,7 @@ class Groupe:
     def getNote(self):
         #Parcourir les élèves du groupe 
         #Récupérer la satisfaction de chacun d'être dans le groupe 
-        #Prendre la satisfaction minimum
+        #Prendre les satisfactions de chaque élève du groupe 
         tmp = self.eleves.copy()
         satisfactions = []
         for eleve in self.eleves:
@@ -55,5 +55,23 @@ class Groupe:
             satisfactions.append(eleve.getSatisfaction(tmp))
             #on remet tous les élèves dans la liste
             tmp = self.eleves.copy()
-        return min(satisfactions)
-        
+        return satisfactions
+    
+    """
+        Récupérer l'élève qui a mis la note la plus faible 
+        Principe : regarder les notes données prendre la plus faible 
+        et récupérer dans la liste des élèves la position de l'élève dont la note est la plus basse 
+    """
+    def getMoinsSatisfait(self):
+        notes = self.getNote()
+        posMin = 0
+        for x in range(1,len(notes)):
+            if(notes[x]< notes[posMin]):
+                posMin = x
+        return self.getEleve()[posMin] 
+
+    """
+        Comparer 2 groupes entre eux de même satisfaction
+    """
+    def estPlusGrand(self, g):
+        return sum(self.getNote()) > sum(g.getNote())
